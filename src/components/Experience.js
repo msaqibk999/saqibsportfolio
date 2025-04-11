@@ -2,14 +2,29 @@ import React from "react";
 import styles from "../moduleCSS/Experience.module.css";
 import { BsFillSuitcaseLgFill } from "react-icons/bs";
 import { ReactComponent as ByjusLogo } from "../media/byjus_logo.svg";
+import { ReactComponent as FreechargeLogo } from "../media/fc_logo.svg";
+import BepLogo from "../media/BEP.png";
 import openLink from "../helpers/openLink";
 import { Reveal } from "./Reveal";
 
 const experiences = [
   {
-    date: "July, 2023 - Present",
+    date: "Sept, 2024 - Present",
+    company: "Freecharge by Axis Bank",
+    url: "hhttps://www.freecharge.in/",
+    iconType: "svg",
+    icon: FreechargeLogo,
+    description: [
+      "<b>HRMS Portal:</b> Designed and developed a robust, scalable HRMS (Human Resource Management System) application for Axis Bank from the ground up, leveraging Next.js for the frontend and Node.js with MySQL on the backend, following microservice architecture principles to ensure modularity and maintainability; implemented core workflows including employee onboarding, with seamless integration of authentication, maker-checker, role-based access control, and service orchestration.",
+      "<b>Encryption/Decryption Service:</b> Built a robust, scalable encryption-decryption service using AWS KMS with key rotation via envelope encryption, avoiding DB updates on key change; implemented Sequelize hooks for real-time data encryption/decryption and used AsyncLocalStorage to securely solate keys per request, ensuring thread safety and eliminating context drilling.",
+    ],
+  },
+  {
+    date: "July, 2023 - Sept, 2024",
     company: "Byjus",
     url: "https://byjus.com/",
+    iconType: "svg",
+    icon: ByjusLogo,
     description: [
       "<b>Engineered Fusion Proxy:</b> Developed a Node.js and Express.js service in a 2-person team, consolidating requests across Aakash, BYJU'S, and Tutor Plus,transitioning vertical infrastructure to a horizontal model to enhance efficiency.",
       "Coordinated concurrent requests to services, resulting in a reduction of overall response times from an average of 5 seconds to 2 seconds.",
@@ -24,6 +39,8 @@ const experiences = [
     date: "Jan, 2023 - July, 2023",
     company: "Byjus Exam Prep",
     url: "https://byjusexamprep.com/",
+    iconType: "img",
+    icon: BepLogo,
     description: [
       "<b>Funnel Optimization and CAT college predictor:</b> Optimized funnels and applied new user engagement strategies, resulting in a substantial 15% increase in lead generation.",
       "Built a CAT college predictor page, empowering users to accurately assess their eligibility for colleges based on academic performance, leading to a 25% boost in informed decision-making and user interaction.",
@@ -38,6 +55,26 @@ const experiences = [
 export default function Experience() {
   const handleRedirect = (url) => {
     openLink(url);
+  };
+
+  const renderIcon = (iconType, IconComponent, url) => {
+    if (iconType === "svg") {
+      return (
+        <IconComponent
+          className={styles.svgLogo}
+          onClick={() => handleRedirect(url)}
+        />
+      );
+    } else {
+      return (
+        <img
+          src={IconComponent}
+          alt="Company Logo"
+          className={styles.imgLogo}
+          onClick={() => handleRedirect(url)}
+        />
+      );
+    }
   };
 
   return (
@@ -69,18 +106,10 @@ export default function Experience() {
                 <hr />
               </span>
               <Reveal isSlider={true} width="fit-content">
-                {index % 2 === 0 ? (
-                  <ByjusLogo
-                    className={styles.byjusLogo}
-                    onClick={() => handleRedirect(experience.url)}
-                  />
-                ) : (
-                  <img
-                    src="https://grdp.co/cdn-cgi/image/width=145,height=40,quality=80,f=auto/https://gs-post-images.grdp.co/2021/9/group-img1630501108025-27.png-rs-high-webp.png"
-                    alt="Byjus Exam Prep"
-                    className={styles.byjusLogo}
-                    onClick={() => handleRedirect(experience.url)}
-                  />
+                {renderIcon(
+                  experience.iconType,
+                  experience.icon,
+                  experience.url
                 )}
               </Reveal>
               <Reveal isSlider={true} width="fit-content">

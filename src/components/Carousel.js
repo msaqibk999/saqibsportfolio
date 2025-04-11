@@ -15,6 +15,7 @@ export default function Carousel2({ children }) {
   const intervalRef = useRef();
   const [current, setCurrent] = useState(1);
   const [translateX, setTranslateX] = useState(0);
+
   const slildes = useMemo(() => {
     if (children.length > 1) {
       let items = Children.map(children, (child, index) => (

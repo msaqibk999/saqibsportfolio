@@ -6,7 +6,7 @@ import { FaDownload } from "react-icons/fa";
 
 const personalInfo = {
   name: "Mohd Saqib",
-  age: "23 years",
+  age: "24 years",
   phone: "+91-9319319595",
   nationality: "Indian",
   languages: "English, Hindi, Arabic",

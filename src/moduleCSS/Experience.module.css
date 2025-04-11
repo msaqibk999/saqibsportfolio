@@ -90,10 +90,18 @@
   transform: scale(1.15);
 }
 
-.byjusLogo {
+.svgLogo {
   height: 5rem;
   width: 10rem;
   margin-left: 2rem;
+  cursor: pointer;
+  aspect-ratio: 2/1;
+}
+
+.imgLogo {
+  height: 3rem;
+  width: 10rem;
+  margin: 0 0 1rem 2rem;
   cursor: pointer;
   aspect-ratio: 2/1;
 }
@@ -257,9 +265,15 @@
     margin-right: 0.75rem;
   }
 
-  .byjusLogo {
+  .svgLogo {
     height: 4rem;
     width: 8rem;
+    margin-left: 1.5rem;
+  }
+
+  .imgLogo {
+    height: 2rem;
+    width: 7rem;
     margin-left: 1.5rem;
   }
 
